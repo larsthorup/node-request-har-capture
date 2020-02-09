@@ -7,8 +7,8 @@ var requestHarCapture = require('../request-har-capture.js');
 
 describe('request-har-capture', function () {
   beforeEach(function () {
-    this.sinon = sinon.sandbox.create();
-    this.sinon.stub(requestHarCapture, 'request', function (options) {
+    this.sinon = sinon.createSandbox();
+    this.sinon.stub(requestHarCapture, 'request').callsFake(function (options) {
       return new Promise(function (resolve) {
         resolve({
           request: options,

@@ -80,7 +80,7 @@ requestHarCapture.saveHar = function (fileName) {
   var httpArchive = {
     log: {
       version: '1.2',
-      creator: {name: 'request-har-capture', version: pkg.version},
+      creator: { name: 'request-har-capture', version: pkg.version },
       entries: harEntries
     }
   };
