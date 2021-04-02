@@ -1,29 +1,33 @@
-var request = require('request-promise');
-var fs = require('fs');
-var pkg = require('./package.json');
+const request = require('request-promise');
+const fs = require('fs');
+const pkg = require('./package.json');
 
-var harEntries = [];
+let harEntries = [];
 
 function buildHarHeaders (headers) {
-  return headers ? Object.keys(headers).map(function (key) {
-    return {
-      name: key,
-      value: headers[key]
-    };
-  }) : [];
+  return headers
+    ? Object.keys(headers).map(function (key) {
+        return {
+          name: key,
+          value: headers[key]
+        };
+      })
+    : [];
 }
 
 function buildPostData (body) {
-  return body ? {
-    mimeType: 'application/json',
-    text: body
-  } : null;
+  return body
+    ? {
+        mimeType: 'application/json',
+        text: body
+      }
+    : null;
 }
 
 function buildHarEntry (response) {
-  var startTime = response.request.startTime;
-  var endTime = Date.now();
-  var entry = {
+  const startTime = response.request.startTime;
+  const endTime = Date.now();
+  const entry = {
     startedDateTime: new Date(startTime).toISOString(),
     time: endTime - startTime,
     request: {
@@ -77,7 +81,7 @@ function requestHarCapture (options) {
 requestHarCapture.request = request;
 
 requestHarCapture.saveHar = function (fileName) {
-  var httpArchive = {
+  const httpArchive = {
     log: {
       version: '1.2',
       creator: { name: 'request-har-capture', version: pkg.version },

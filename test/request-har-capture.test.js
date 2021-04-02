@@ -1,9 +1,9 @@
 /* eslint-env mocha */
 
-var should = require('chai').should();
-var sinon = require('sinon');
-var fs = require('fs');
-var requestHarCapture = require('../request-har-capture.js');
+const should = require('chai').should();
+const sinon = require('sinon');
+const fs = require('fs');
+const requestHarCapture = require('../request-har-capture.js');
 
 describe('request-har-capture', function () {
   beforeEach(function () {
@@ -30,7 +30,7 @@ describe('request-har-capture', function () {
   });
 
   describe('when performing a request', function () {
-    var actualResponse;
+    let actualResponse;
 
     beforeEach(function () {
       return requestHarCapture({
@@ -67,13 +67,13 @@ describe('request-har-capture', function () {
       });
 
       it('should save the file in har format', function () {
-        var saveArgs = fs.writeFileSync.getCall(0).args;
+        const saveArgs = fs.writeFileSync.getCall(0).args;
         saveArgs[0].should.equal('test.har');
-        var harFile = JSON.parse(saveArgs[1]);
+        const harFile = JSON.parse(saveArgs[1]);
         harFile.log.creator.name.should.equal('request-har-capture');
         harFile.log.creator.version.should.equal('0.3.1');
         harFile.log.entries.length.should.equal(2);
-        var entry = harFile.log.entries[0];
+        const entry = harFile.log.entries[0];
         entry.request.method.should.equal('POST');
         entry.request.url.should.equal('http://localhost:1719/somePath');
         entry.request.headers.length.should.equal(1);
@@ -94,10 +94,10 @@ describe('request-har-capture', function () {
       });
 
       it('should hand simple requests without headers and body', function () {
-        var saveArgs = fs.writeFileSync.getCall(0).args;
+        const saveArgs = fs.writeFileSync.getCall(0).args;
         saveArgs[0].should.equal('test.har');
-        var harFile = JSON.parse(saveArgs[1]);
-        var entry = harFile.log.entries[1];
+        const harFile = JSON.parse(saveArgs[1]);
+        const entry = harFile.log.entries[1];
         entry.request.method.should.equal('GET');
         entry.request.url.should.equal('http://localhost:1719/simplePath');
         entry.request.headers.should.deep.equal([]);
