@@ -71,7 +71,7 @@ describe('request-har-capture', function () {
         saveArgs[0].should.equal('test.har');
         const harFile = JSON.parse(saveArgs[1]);
         harFile.log.creator.name.should.equal('request-har-capture');
-        harFile.log.creator.version.should.equal('0.3.1');
+        harFile.log.creator.version.should.equal('0.3.2');
         harFile.log.entries.length.should.equal(2);
         const entry = harFile.log.entries[0];
         entry.request.method.should.equal('POST');
