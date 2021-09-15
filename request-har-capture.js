@@ -7,11 +7,11 @@ let harEntries = [];
 function buildHarHeaders (headers) {
   return headers
     ? Object.keys(headers).map(function (key) {
-        return {
-          name: key,
-          value: headers[key]
-        };
-      })
+      return {
+        name: key,
+        value: headers[key]
+      };
+    })
     : [];
 }
 
