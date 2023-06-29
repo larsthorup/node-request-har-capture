@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "semistandard",
     "test": "semistandard && nyc --nycrc-path=test/nyc.conf.js node_modules/mocha/bin/_mocha",
-    "travis": "npm test && coveralls < output/coverage/lcov.info"
+    "ci": "npm test && coveralls < output/coverage/lcov.info"
   },
   "repository": {
     "type": "git",
