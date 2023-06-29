@@ -16,4 +16,6 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Run tests
-        run: npm run ci
+        run: npm test
+      - name: Publish coverage
+        uses: coverallsapp/github-action@v2.2.0
